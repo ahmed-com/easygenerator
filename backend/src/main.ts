@@ -1,16 +1,26 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { ConfigService } from '@nestjs/config';
+import { ConsoleLogger, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: new ConsoleLogger({
+      timestamp: true,
+      colors: true,
+      prefix: 'EasyGenerator',
+    }),
+  });
 
-  const config = new DocumentBuilder()
+  app.useGlobalPipes(new ValidationPipe())
+
+  const swaggerConfig = new DocumentBuilder()
     .setTitle('Easy Generator API')
     .setDescription('The Easy Generator API description')
     .setVersion('1.0')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config, {
+  const documentFactory = () => SwaggerModule.createDocument(app, swaggerConfig, {
     operationIdFactory: (_: string, methodKey: string) => methodKey,
   });
   SwaggerModule.setup('api-docs', app, documentFactory, {
@@ -18,6 +28,13 @@ async function bootstrap() {
     yamlDocumentUrl: '/api-docs-yaml',
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  const configService = app.get(ConfigService);
+  const port = configService.get<number>('PORT');
+
+  if (!port) {
+    throw new Error('PORT is not defined');
+  }
+
+  await app.listen(port);
 }
 bootstrap();
