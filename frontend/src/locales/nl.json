@@ -1,0 +1,26 @@
+{
+  "message": "Hallo Wereld",
+  "logout": "Uitloggen",
+  "login": {
+    "title": "Inloggen",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "submit": "Verzenden",
+    "register": "Registreren"
+  },
+  "register": {
+    "title": "Registreren",
+    "name": "Naam",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "confirmPassword": "Bevestig Wachtwoord",
+    "submit": "Verzenden",
+    "login": "Inloggen"
+  },
+  "locales": {
+    "en": "Engels",
+    "nl": "Nederlands",
+    "de": "Duits",
+    "ar": "Arabisch"
+  }
+}

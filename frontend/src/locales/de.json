@@ -1,0 +1,26 @@
+{
+  "message": "Hallo Welt",
+  "logout": "Ausloggen",
+  "login": {
+    "title": "Anmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "submit": "Einreichen",
+    "register": "Registrieren"
+  },
+  "register": {
+    "title": "Registrieren",
+    "name": "Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "submit": "Einreichen",
+    "login": "Anmelden"
+  },
+  "locales": {
+    "en": "Englisch",
+    "nl": "Niederländisch",
+    "de": "Deutsch",
+    "ar": "Arabisch"
+  }
+}
