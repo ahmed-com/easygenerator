@@ -35,6 +35,7 @@ async function bootstrap() {
     throw new Error('PORT is not defined');
   }
 
+  app.enableCors();
   await app.listen(port);
 }
 bootstrap();

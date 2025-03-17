@@ -8,15 +8,7 @@ import {
 } from 'class-validator';
 import { SafeUserObject } from '../service/auth.service';
 
-export class RegisterUserDto {
-  @ApiProperty({
-    description: 'User name for the new account',
-    example: 'john_doe',
-  })
-  @IsNotEmpty()
-  @MinLength(3)
-  name: string;
-
+export class LoginDto {
   @ApiProperty({
     description: 'Email for the new account',
     example: 'john@example.com',
@@ -32,14 +24,11 @@ export class RegisterUserDto {
   @IsNotEmpty()
   @MinLength(8)
   @IsAscii()
-  @Matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d]).+$/, {
-    message:
-      'Password must contain at least one letter, one number and one special character',
-  })
+  @Matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d]).+$/)
   password: string;
 }
 
-export class RegisterUserDtoResponse {
+export class LoginDtoResponse {
   name: string;
   email: string;
   id: string;

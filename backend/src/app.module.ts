@@ -20,6 +20,7 @@ import { Connection } from 'mongoose';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URI'),
+        authSource: 'admin',
         onConnectionCreate: (connection: Connection) => {
           const logger = new Logger('Mongoose');
           connection.on('connected', () => logger.verbose('Connected to MongoDB'));
