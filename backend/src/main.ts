@@ -13,16 +13,17 @@ async function bootstrap() {
     }),
   });
 
-  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalPipes(new ValidationPipe());
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Easy Generator API')
     .setDescription('The Easy Generator API description')
     .setVersion('1.0')
     .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, swaggerConfig, {
-    operationIdFactory: (_: string, methodKey: string) => methodKey,
-  });
+  const documentFactory = () =>
+    SwaggerModule.createDocument(app, swaggerConfig, {
+      operationIdFactory: (_: string, methodKey: string) => methodKey,
+    });
   SwaggerModule.setup('api-docs', app, documentFactory, {
     jsonDocumentUrl: '/api-docs-json',
     yamlDocumentUrl: '/api-docs-yaml',
@@ -35,7 +36,12 @@ async function bootstrap() {
     throw new Error('PORT is not defined');
   }
 
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    credentials: true,
+  });
   await app.listen(port);
 }
 bootstrap();

@@ -40,7 +40,7 @@ export const useAuthStore = defineStore("auth", {
     async register(userData: RegisterData): Promise<void> {
       try {
         const response = await api.post<AuthResponse>(
-          "/api/register",
+          "/auth/register",
           userData
         );
         this.token = response.data.accessToken;
