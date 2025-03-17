@@ -4,7 +4,7 @@
       <v-app-bar-title> {{ t("title") }} </v-app-bar-title>
       <v-spacer></v-spacer>
       <theme-btn></theme-btn>
-      <logout-btn v-if="isAuthenticated"></logout-btn>
+      <logout-btn v-if="authStore.isAuthenticated"></logout-btn>
     </v-app-bar>
 
     <v-main class="h-full my-4">
@@ -20,5 +20,5 @@ import ThemeBtn from "@/components/theme-btn.vue";
 import logoutBtn from "@/components/logout-btn.vue";
 
 const { t } = useI18n();
-const { isAuthenticated } = useAuthStore();
+const authStore = useAuthStore();
 </script>

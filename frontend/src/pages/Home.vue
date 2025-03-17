@@ -1,8 +1,8 @@
 <template>
   <h1>{{ t("message") }}</h1>
-  <p v-if="user">
+  <p v-if="authStore.user">
     logged in
-    {{ user.name }}
+    {{ authStore.user.name }}
   </p>
 </template>
 
@@ -12,5 +12,5 @@ import { useI18n } from "vue-i18n";
 import { useAuthStore } from "@/stores/auth";
 
 const { t } = useI18n<[MessageSchema], Locale>();
-const { user } = useAuthStore();
+const authStore = useAuthStore();
 </script>

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="v$.$touch">
-    <v-alert v-if="error" type="error" dismissible :text="error"></v-alert>
+    <v-alert v-if="authStore.error" type="error" dismissible :text="authStore.error"></v-alert>
 
     <v-text-field
       v-model="state.name"
@@ -55,10 +55,10 @@ import { useAuthStore } from "@/stores/auth";
 import router from "@/router";
 
 const { t } = useI18n<[MessageSchema], Locale>();
-const { error, register, isAuthenticated } = useAuthStore();
+const authStore = useAuthStore();
 
 watchEffect(() => {
-  if (isAuthenticated) {
+  if (authStore.isAuthenticated) {
     router.push({ path: "/" });
   }
 });
@@ -98,6 +98,6 @@ function submit() {
     return;
   }
 
-  register(state);
+  authStore.register(state);
 }
 </script>
