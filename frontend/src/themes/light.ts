@@ -3,17 +3,17 @@ import { type ThemeDefinition } from "vuetify";
 export const light: ThemeDefinition = {
   dark: false,
   colors: {
-    background: "#fce38a",
-    surface: "#fce38a",
-    primary: "#02c39a",
-    "primary-darken-1": "#028090",
-    secondary: "#003459",
-    // 'secondary-darken-1': '#018786',
-    error: "#e80020",
-    info: "#2196F3",
-    success: "#4CAF50",
-    warning: "#FB8C00",
-    mark: "#FFFF00",
+    background: "#FAFAFA",
+    surface: "#FFFFFF", 
+    primary: "#1976D2", 
+    "primary-darken-1": "#1565C0", 
+    secondary: "#424242", 
+    "secondary-darken-1": "#1B1B1B", 
+    error: "#D32F2F", 
+    info: "#2196F3", 
+    success: "#388E3C", 
+    warning: "#FBC02D", 
+    mark: "#FFEB3B", 
   },
   variables: {
     texture:
