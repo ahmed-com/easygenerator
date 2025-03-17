@@ -1,5 +1,13 @@
-import { helpers } from "@vuelidate/validators";
+import { helpers, createI18nMessage } from "@vuelidate/validators";
+import { i18n } from "@/plugins/i18n";
+import type { ValidationRuleWithoutParams } from "@vuelidate/core";
 
-const vPassword = helpers.regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d]).+$/)
+const withI18nMessage = createI18nMessage({ t: i18n.global.t.bind(i18n) });
+const vPassword = helpers.regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d]).+$/);
 
-export const password = helpers.withMessage("Password must contain at least one letter, one number, and one special character", vPassword);
+export const password: ValidationRuleWithoutParams<any> = withI18nMessage(
+  vPassword,
+  {
+    messagePath: () => "validations.password",
+  }
+);

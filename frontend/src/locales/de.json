@@ -1,4 +1,5 @@
 {
+  "title": "Easy Generator",
   "message": "Hallo Welt",
   "logout": "Ausloggen",
   "login": {
@@ -22,5 +23,12 @@
     "nl": "Niederländisch",
     "de": "Deutsch",
     "ar": "Arabisch"
+  },
+  "validations": {
+    "required": "Dieses Feld ist erforderlich",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "minLength": "Dieses Feld muss mindestens {min} Zeichen enthalten",
+    "password": "Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen enthalten",
+    "confirmPassword": "Passwörter müssen übereinstimmen"
   }
 }

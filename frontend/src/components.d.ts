@@ -9,7 +9,14 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    LocaleSelect: typeof import('./components/locale-select.vue')['default']
+    LogoutBtn: typeof import('./components/logout-btn.vue')['default']
+    Message: typeof import('./components/message.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SigninForm: typeof import('./components/signin-form.vue')['default']
+    SignupForm: typeof import('./components/signup-form.vue')['default']
+    ThemeBtn: typeof import('./components/theme-btn.vue')['default']
+    ThemeSelect: typeof import('./components/theme-btn.vue')['default']
   }
 }

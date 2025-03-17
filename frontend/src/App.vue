@@ -1,9 +1,11 @@
 <template>
   <v-app>
-    <router-view />
+    <Base>
+      <router-view />
+    </Base>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-  //
+import Base from "./layouts/Base.vue";
 </script>

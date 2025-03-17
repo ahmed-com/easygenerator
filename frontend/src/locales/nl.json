@@ -1,4 +1,5 @@
 {
+  "title": "Easy Generator",
   "message": "Hallo Wereld",
   "logout": "Uitloggen",
   "login": {
@@ -22,5 +23,12 @@
     "nl": "Nederlands",
     "de": "Duits",
     "ar": "Arabisch"
+  },
+  "validations": {
+    "required": "Dit veld is verplicht",
+    "email": "Voer een geldig e-mailadres in",
+    "minLength": "Dit veld moet minimaal {min} tekens bevatten",
+    "password": "Wachtwoord moet minimaal één letter, één cijfer en één speciaal teken bevatten",
+    "confirmPassword": "Wachtwoorden moeten overeenkomen"
   }
 }
