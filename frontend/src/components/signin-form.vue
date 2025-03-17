@@ -1,5 +1,7 @@
 <template>
-  <form>
+  <form @submit.prevent="v$.$touch">
+    <v-alert v-if="error" type="error" dismissible :text="error"></v-alert>
+
     <v-text-field
       v-model="state.email"
       :error-messages="<any> v$.email.$errors.map((e) => e.$message)"
@@ -19,7 +21,7 @@
       type="password"
     ></v-text-field>
 
-    <v-btn class="me-4" @click="v$.$validate"> {{ t('login.submit') }} </v-btn>
+    <v-btn class="me-4" @click="submit"> {{ t("login.submit") }} </v-btn>
     <v-btn @click="clear"> clear </v-btn>
   </form>
 </template>
@@ -30,8 +32,17 @@ import { useVuelidate } from "@vuelidate/core";
 import { email, required, minLength, password } from "@/validators";
 import { type Locale, type MessageSchema } from "@/plugins/i18n";
 import { useI18n } from "vue-i18n";
+import { useAuthStore } from "@/stores/auth";
+import router from "@/router";
 
 const { t } = useI18n<[MessageSchema], Locale>();
+const { error, login, isAuthenticated } = useAuthStore();
+
+watchEffect(() => {
+  if (isAuthenticated) {
+    router.push({ path: "/" });
+  }
+});
 
 const initialState = {
   password: "",
@@ -54,5 +65,14 @@ function clear() {
 
   state.email = initialState.email;
   state.password = initialState.password;
+}
+
+function submit() {
+  v$.value.$touch();
+  if (v$.value.$invalid) {
+    return;
+  }
+
+  login(state);
 }
 </script>

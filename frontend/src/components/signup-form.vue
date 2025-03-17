@@ -57,6 +57,12 @@ import router from "@/router";
 const { t } = useI18n<[MessageSchema], Locale>();
 const { error, register, isAuthenticated } = useAuthStore();
 
+watchEffect(() => {
+  if (isAuthenticated) {
+    router.push({ path: "/" });
+  }
+});
+
 const initialState = {
   name: "",
   password: "",
@@ -93,9 +99,5 @@ function submit() {
   }
 
   register(state);
-
-  if (isAuthenticated) {
-    router.push({ path: "/" });
-  }
 }
 </script>
